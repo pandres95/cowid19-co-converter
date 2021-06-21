@@ -1,0 +1,8 @@
+{
+  "name": "@swimmingoncode/cowid-19-excel-converter",
+  "version": "1.0.0",
+  "dependencies": {
+    "googleapis": "^77.0.0",
+    "read-excel-file": "^5.2.2"
+  }
+}
