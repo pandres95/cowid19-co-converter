@@ -22,6 +22,13 @@ async function downloadFile(fileId, auth) {
   }
 }
 
+/**
+ * 
+ * @param {string} spreadsheetId 
+ * @param {string} auth 
+ * @param {string} sheetTitle 
+ * @param {Array<string>[]} values 
+ */
 async function writeDestinationSheet (spreadsheetId, auth, sheetTitle, values) {
   const sheets = google.sheets({ version: 'v4', auth });
 
@@ -35,10 +42,14 @@ async function writeDestinationSheet (spreadsheetId, auth, sheetTitle, values) {
       range: sheetTitle,
     });
     
+    // Workaround: Since readXslxFile returns raw values, 
+    console.log(values[43]);
+    values[43][2] = '=TODAY()-1';
+
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: `${sheetTitle}!A1`,
-      valueInputOption: 'RAW',
+      valueInputOption: 'USER_ENTERED',
       resource
     });
   } catch (error) {
