@@ -43,8 +43,7 @@ async function writeDestinationSheet (spreadsheetId, auth, sheetTitle, values) {
     });
     
     // Workaround: Since readXslxFile returns raw values, 
-    console.log(values[43]);
-    values[43][2] = '=TODAY()-1';
+    values[44][2] = '=TODAY()-2';
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
